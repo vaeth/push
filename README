@@ -1,0 +1,59 @@
+(C) Martin Väth <martin@mvath.de>
+This project is under the BSD license.
+
+A POSIX shell function to treat a variable like an array, quoting args.
+
+To install this function, simply copy push.sh somewhere into your path.
+For Gentoo, there is an ebuild in the mv overlay (available by layman).
+
+To use this function within your POSIX shell script execute:
+. push.sh
+After this you have the shell function Push.
+
+Usage: Push [-c] VARIABLE [arguments]
+
+The arguments will be appended to VARIABLE in a quoted manner so that
+an "eval" $VARIABLE obtains the collected arguments (see examples).
+With option -c, VARIABLE will be cleared before arguments are appended:
+The first call for VARIABLE must always be done with -c.
+The return value is zero if $VARIABLE contains at least one pushed argument.
+
+
+Example 1:
+
+Push -c foo 'data with special symbols like ()"\' "'another arg'"
+Push foo further args
+eval "printf '%s\\n' ${foo}"
+# Be aware that not only $foo but the whole command is eval'ed!
+
+will output
+
+data with special symbols like ()"\
+'another arg'
+further
+args
+
+
+Example 2: Remove the last argument from the argument list in a script.
+
+Push -c args
+while [ ${#} -gt 1 ]
+do	Push args "${1}"
+	shift
+done
+eval "set -- ${args}"
+
+
+Example 3: Make an implicit "eval" become harmless.
+
+Push -c files "${@}" && su -c "cat -- ${files}"
+
+uses "su" to "cat" files passed as arguments with root permissions,
+even if the arguments contain problematic symbols like spaces, <, or quotes.
+
+
+Example 4: Omitting arguments for Push can be useful.
+
+Push -c data
+SomeFunction
+Push data || echo 'nothing was pushed to $data in SomeFunction'

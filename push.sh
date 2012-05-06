@@ -11,17 +11,25 @@ Push() {
 	eval PushA_=\${${1}}
 	shift
 	for PushE_
-	do	PushA_="${PushA_}${PushA_:+ }'"
+	do	[ -z "${PushA_:+-}" ] || PushA_="${PushA_} "
+		PushF_=:
+		case ${PushE_:-=} in
+		[=~]*)	PushF_=false;;
+		esac
 		PushC_=${PushE_}
-		while {
-			PushD_=${PushC_%%\'*}
-			[ "${PushD_}" != "${PushC_}" ]
-		}
-		do	PushA_="${PushA_}${PushD_}'\\''"
+		while PushD_=${PushC_%%\'*}
+		do	if ${PushF_} && case ${PushD_} in
+			*[!-+=~/:.0-9_a-zA-Z]*)	false;;
+			esac
+			then	PushA_=${PushA_}${PushD_}
+			else	PushA_="${PushA_}'${PushD_}'"
+				PushF_=:
+			fi
+			[ "${PushD_}" = "${PushC_}" ] && break
+			PushA_="${PushA_}\\'"
 			PushC_=${PushC_#*\'}
 		done
-		PushA_="${PushA_}${PushC_}'"
 	done
 	eval ${PushB_}=\${PushA_}
-	[ -n "${PushA_}" ]
+	[ -n "${PushA_:+-}" ]
 }

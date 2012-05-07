@@ -19,6 +19,10 @@ With option -c, VARIABLE will be cleared before arguments are appended:
 The first call for VARIABLE must always be done with -c.
 The return value is zero if $VARIABLE contains at least one pushed argument.
 
+Script using Push must not use variables of the form Push*_ (the reason is
+that POSIX does not provide a local name scope, and so Push uses internally
+global variables of such a form)
+
 
 Example 1:
 

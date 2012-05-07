@@ -32,5 +32,5 @@ Push() {
 	done
 	eval "${PushB_}=\${PushA_}
 	unset PushA_ PushB_ PushC_ PushD_ PushE_
-	[ -n \"${${PushB_}:++}\" ]"
+	[ -n \"\${${PushB_}:++}\" ]"
 }

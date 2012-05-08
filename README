@@ -3,9 +3,7 @@ This project is under the BSD license.
 
 A POSIX shell function to treat a variable like an array, quoting args.
 
-To install this function, simply copy push.sh somewhere into your path.
-For Gentoo, there is an ebuild in the mv overlay (available by layman).
-
+For installation simply copy push.sh somewhere into your path.
 To use this function within your POSIX shell script execute:
 . push.sh
 After this you have the shell function Push.

@@ -26,7 +26,7 @@ Example 1:
 
 Push -c foo 'data with special symbols like ()"\' "'another arg'"
 Push foo further args
-eval "printf '%s\\n' ${foo}"
+eval "printf '%s\\n' $foo"
 # Be aware that not only $foo but the whole command is eval'ed!
 
 will output
@@ -40,16 +40,16 @@ args
 Example 2: Remove the last argument from the argument list in a script.
 
 Push -c args
-while [ ${#} -gt 1 ]
-do	Push args "${1}"
+while [ $# -gt 1 ]
+do	Push args "$1"
 	shift
 done
-eval "set -- ${args}"
+eval "set -- $args"
 
 
 Example 3: Quote a command for "su" correctly.
 
-Push -c files "${@}" && su -c "cat -- ${files}"
+Push -c files "$@" && su -c "cat -- $files"
 
 uses "su" to "cat" files passed as arguments with root permissions,
 even if the arguments contain problematic symbols like spaces, <, or quotes.
@@ -58,8 +58,8 @@ even if the arguments contain problematic symbols like spaces, <, or quotes.
 Example 4: Pretty-print a command without loosing exactness.
 
 set -- source~1 'source 2' "source '3'"
-Push -c v cp -- "${@}" \~dest
-printf '%s\n' "${v}"
+Push -c v cp -- "$@" \~dest
+printf '%s\n' "$v"
 
 Will output a command which reliably can be pasted by the user
 into a POSIX shell but which nevertheless is reasonably human-readable.

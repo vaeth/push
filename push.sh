@@ -25,12 +25,12 @@ Push() {
 			else	PushA_="$PushA_'$PushD_'"
 				unset PushF_
 			fi
-			[ "$PushD_" = "$PushC_" ] && break
+			[ "$PushD_" = "$PushC_" ] && break || \
 			PushA_=$PushA_\\\'
 			PushC_=${PushC_#*\'}
 		done
 	done
 	eval "$PushB_=\$PushA_
 	unset PushA_ PushB_ PushC_ PushD_ PushE_
-	[ -n \"\${$PushB_:++}\" ]"
+	[ -n \"\${$PushB_:++}\" ]" || return 1
 }

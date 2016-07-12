@@ -44,7 +44,8 @@ while [ $# -gt 1 ]
 do	Push args "$1"
 	shift
 done
-eval "set -- $args"
+eval "set -- a $args"; shift
+# Note: "set -- $args" can break with some shells if args is empty
 
 
 Example 3: Quote a command for "su" correctly.

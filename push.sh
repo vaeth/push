@@ -22,7 +22,7 @@ Push() {
 		PushC_=$PushE_
 		while PushD_=${PushC_%%\'*}
 		do	if ${PushF_-:} && case $PushD_ in
-			*[!-+=~/:.0123456789_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]*)
+			*[!-+=~@%/:.,_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]*)
 				false;;
 			esac
 			then	PushA_=$PushA_$PushD_

@@ -1,6 +1,5 @@
-#! /bin/sh
+#!/usr/bin/env cat
 # (C) Martin V\"ath <martin@mvath.de>
-# This script is meant to be sourced; the first line is only for editors
 
 Push() {
 	case $1 in

@@ -4,7 +4,7 @@ This project is under the BSD license.
 A POSIX shell function to treat a variable like an array, quoting args.
 
 For installation simply copy the content of bin/ somewhere into your path
-with the executable bit being set.
+with the executable bit being set or execute make (and "make install" as root).
 
 To check from within a POSIX shell script whether Push 2.0 (or newer)
 is installed, and sourcing it if it is, you can use something like:
@@ -14,12 +14,14 @@ then	eval "$SOME_VARIABLE"
 else	echo "push.sh not installed" >&2
 fi
 
-Alternatively, you can use
+Remark: An obsoleted method was to use instead
 
 . push.sh
 
-The latter works also with earlier versions of Push, but it has the
-disadvantage of stopping your script if push.sh is not available.
+The latter works for older versions of push or if one installs manually,
+but unless an appropriate PATH before sourcing is set, it fails when
+push.sh is replaced by a wrapper script which happens with the provided
+Makefile. Moreover, if push.sh is not available it stops the script.
 
 After this you have the shell function Push.
 

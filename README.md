@@ -1,7 +1,7 @@
 # push
 
 (C) Martin Väth <martin@mvath.de>
-This project is under the BSD license.
+This project is under the BSD license 2.0 (“3-clause BSD license”).
 
 A POSIX shell function to treat a variable like an array, quoting args.
 

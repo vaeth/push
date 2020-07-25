@@ -1,5 +1,6 @@
 #!/usr/bin/env cat
 # (C) Martin V\"ath <martin@mvath.de>
+# SPDX-License-Identifier: BSD-3-Clause
 
 Push() {
 	case $1 in

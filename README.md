@@ -2,6 +2,7 @@
 
 (C) Martin Väth <martin@mvath.de>
 This project is under the BSD license 2.0 (“3-clause BSD license”).
+SPDX-License-Identifier: BSD-3-Clause
 
 A POSIX shell function to treat a variable like an array, quoting args.
 

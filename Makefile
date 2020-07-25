@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: BSD-3-Clause
 PREFIX=/usr
 EPREFIX=
 BINDIR=$(PREFIX)/bin

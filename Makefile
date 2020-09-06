@@ -9,7 +9,7 @@ DATADIR=$(PREFIX)/share/push
 all: push.sh
 
 push.sh:
-	echo '#!$(EPREFIX)/bin/cat $(DATADIR)/push.sh' >push.sh
+	echo '#!$(EPREFIX)/bin/cat $(EPREFIX)$(DATADIR)/push.sh' >push.sh
 
 install: push.sh
 	install -d '$(DESTDIR)$(BINDIR)'

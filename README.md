@@ -106,3 +106,8 @@ Push data || echo 'nothing was pushed to $data in SomeFunction'
 This has the advantage that you need not rely on the implementation
 details of how Push stores the data in the variable (which may depend
 on the version of Push).
+
+## AUTHORS
+
+Martin Väth <martin at mvath.de> (Main part)
+xofyarg (fix in Makefile)
